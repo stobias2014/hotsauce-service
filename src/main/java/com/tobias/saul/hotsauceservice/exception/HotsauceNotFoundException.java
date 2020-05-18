@@ -11,4 +11,8 @@ public class HotsauceNotFoundException extends RuntimeException {
 		super("Hot sauce [" + hotsauceId + "] not found.");
 	}
 
+	public HotsauceNotFoundException(String name) {
+		super("Hot sauce [" + name + "] not found.");
+	}
+
 }

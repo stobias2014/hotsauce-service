@@ -43,5 +43,13 @@ public class HotsauceService {
 		
 	}
 	
+	public Hotsauce getHotsauceByName(String name) {
+		return hotsauceRepo.findByName(name).orElseThrow(() -> new HotsauceNotFoundException(name));
+	}
+	
+	public List<Hotsauce> getHotSauceInRangeofScoville(int scoville1, int scoville2) {
+		return hotsauceRepo.findInRangeOfScoville(scoville1, scoville2);
+	}
+	
 	
 }

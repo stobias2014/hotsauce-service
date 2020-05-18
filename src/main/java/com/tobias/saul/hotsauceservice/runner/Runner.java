@@ -29,7 +29,7 @@ public class Runner implements CommandLineRunner {
 
 		log.info("Adding hot sauces...");
 		log.info(hotsauceService
-				.addHotsauce(new Hotsauce("hot sauce1", 40000, new BigDecimal(3.45).setScale(2, RoundingMode.FLOOR)))
+				.addHotsauce(new Hotsauce("hot sauce1", 20000, new BigDecimal(3.45).setScale(2, RoundingMode.FLOOR)))
 				.toString());
 		log.info(hotsauceService
 				.addHotsauce(new Hotsauce("hot sauce2", 40000, new BigDecimal(3.45).setScale(2, RoundingMode.FLOOR)))
@@ -38,10 +38,10 @@ public class Runner implements CommandLineRunner {
 				.addHotsauce(new Hotsauce("hot sauce3", 40000, new BigDecimal(3.45).setScale(2, RoundingMode.FLOOR)))
 				.toString());
 		log.info(hotsauceService
-				.addHotsauce(new Hotsauce("hot sauce4", 40000, new BigDecimal(3.45).setScale(2, RoundingMode.FLOOR)))
+				.addHotsauce(new Hotsauce("hot sauce4", 60000, new BigDecimal(3.45).setScale(2, RoundingMode.FLOOR)))
 				.toString());
 		log.info(hotsauceService
-				.addHotsauce(new Hotsauce("hot sauce5", 40000, new BigDecimal(3.45).setScale(2, RoundingMode.FLOOR)))
+				.addHotsauce(new Hotsauce("hot sauce5", 80000, new BigDecimal(3.45).setScale(2, RoundingMode.FLOOR)))
 				.toString());
 
 		log.info("Retrieving hot sauce...");
@@ -62,6 +62,16 @@ public class Runner implements CommandLineRunner {
 		log.info(hotsauceService.updateHotsauce(
 				new Hotsauce(1L, "updated hot sauce", 40000, new BigDecimal(3.45).setScale(2, RoundingMode.FLOOR)))
 				.toString());
+
+		log.info("Retrieving hot sauce by name...");
+		try {
+			log.info(hotsauceService.getHotsauceByName("hot sauce2").toString());
+		} catch (HotsauceNotFoundException ex) {
+			ex.getMessage();
+		}
+
+		log.info("Retrieving list of hot sauces in a scoville level range...");
+		hotsauceService.getHotSauceInRangeofScoville(40000, 80000).forEach(hotsauce -> log.info(hotsauce.toString()));
 
 	}
 
