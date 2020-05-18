@@ -1,5 +1,7 @@
 package com.tobias.saul.hotsauceservice.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,10 @@ public class HotsauceService {
 	
 	public Hotsauce getHotsauce(Long hotsauceId) {
 		return hotsauceRepo.findById(hotsauceId).orElseThrow(() -> new HotsauceNotFoundException(hotsauceId));
+	}
+	
+	public List<Hotsauce> getAllHotsauces() {
+		return hotsauceRepo.findAll();
 	}
 	
 	
