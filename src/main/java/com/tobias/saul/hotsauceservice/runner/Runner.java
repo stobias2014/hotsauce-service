@@ -58,6 +58,11 @@ public class Runner implements CommandLineRunner {
 		log.info("Retrieving all hot sauces...");
 		hotsauceService.getAllHotsauces().forEach(hotsauce -> log.info(hotsauce.toString()));
 
+		log.info("Updating a hot sauce in database...");
+		log.info(hotsauceService.updateHotsauce(
+				new Hotsauce(1L, "updated hot sauce", 40000, new BigDecimal(3.45).setScale(2, RoundingMode.FLOOR)))
+				.toString());
+
 	}
 
 }

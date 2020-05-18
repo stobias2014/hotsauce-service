@@ -1,6 +1,7 @@
 package com.tobias.saul.hotsauceservice.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,17 @@ public class HotsauceService {
 	
 	public List<Hotsauce> getAllHotsauces() {
 		return hotsauceRepo.findAll();
+	}
+	
+	public Hotsauce updateHotsauce(Hotsauce hotsauce) {
+		Optional<Hotsauce> hotsauceInDb = hotsauceRepo.findById(hotsauce.getHotsauceId());
+		
+		if(hotsauceInDb.isPresent()) {
+			return hotsauceRepo.save(hotsauce);
+		} else {
+			throw new HotsauceNotFoundException(hotsauce.getHotsauceId());
+		}
+		
 	}
 	
 	

@@ -24,6 +24,18 @@ public class Hotsauce {
 	private BigDecimal price;
 	
 	public Hotsauce() {}
+	
+	
+
+	public Hotsauce(Long hotsauceId, String name, int scovilleLevel, BigDecimal price) {
+		super();
+		this.hotsauceId = hotsauceId;
+		this.name = name;
+		this.scovilleLevel = scovilleLevel;
+		this.price = price;
+	}
+
+
 
 	public Hotsauce(String name, int scovilleLevel, BigDecimal price) {
 		this.name = name;
